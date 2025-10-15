@@ -1,0 +1,1 @@
+const t=o=>new Promise(e=>{setTimeout(()=>{console.log(`Email sent to ${o.clientEmail} with invoice ${o.invoiceNumber}`),console.log(`Invoice total: $${o.total.toFixed(2)}`),e()},1500)});export{t as sendEmail};
