@@ -14,7 +14,7 @@ app.use(express.json());
 // ===============================
 // GOOGLE CREDENTIALS FOR VERCEL
 // ===============================
-const googleCreds = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
+const googleCreds = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
   ? JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)
   : null;
 
@@ -23,7 +23,8 @@ if (!googleCreds) {
   process.exit(1);
 }
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const geminiKey = process.env.GEMINI_API_KEY;
+const genAI = new GoogleGenerativeAI(geminiKey);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
 // ===============================
